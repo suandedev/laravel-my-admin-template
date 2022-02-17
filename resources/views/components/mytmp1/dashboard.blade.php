@@ -1,5 +1,5 @@
 <x-mytmp1.my-layout>
-    <div class="min-h-full relative bg-gray-50 box-border block">
+    <div class="max-h-screen relative bg-gray-50 box-border block">
        <nav class="ml-60 flex flex-row px-2 py-2 justify-between items-center text-gray-400">
            <ul class="flex flex-row items-center space-x-3">
                <li>
@@ -144,20 +144,683 @@
                    </div>
                </li>
                <li>
-                   <a href="">
+                   <a href="" class="hover:text-gray-700">
                         <ion-icon name="shuffle"></ion-icon>
                    </a>
                </li>
                <li>
-                <a href="">
+                <a href="" class="hover:text-gray-700">
                     <ion-icon name="apps"></ion-icon>
                 </a>
                </li>
            </ul>
        </nav>
        {{-- end navbar --}}
-       <aside>
-
+       <aside class="max-h-screen flex flex-col absolute top-0 bg-gray-700 box-border overflow-auto">
+            <a href="" class="flex flex-row items-center justify-start space-x-2 px-4 py-2 text-sm border-b border-gray-500 hover:text-gray-300 box-border">
+                <img class="w-6 h-6 rounded-full" src="{{ asset('img/users1.jpg') }}" alt="">
+                <span class="text-gray-400 hover:text-gray-300">MyTmp1</span>
+            </a>
+            <div>
+                <div>
+                    <div class="box-border">
+                        {{-- sidebar user panel --}}
+                        <div class="flex flex-row items-center space-x-2 hover:text-gray-300 px-4 py-2 border-b border-gray-400">
+                            <div>
+                                <img class="block w-7 h-7 rounded-full border-gray-600 border-2" src="{{ asset('img/users1.jpg') }}" alt="">
+                            </div>
+                            <div>
+                                <a href="" class="text-gray-400 hover:text-gray-300 text-sm">made suande</a>
+                            </div>
+                        </div>
+                        {{-- sidebar serach --}}
+                        <div class="relative box-border" x-data="{open: false}">
+                            <div class="flex flex-row items-center justify-between px-4 py-2 box-border ">
+                                <input type="text" class="block h-6 w-40 bg-gray-500 border border-gray-400 rounded-l focus:outline-none focus:ring-gray-400 focus:ring-1">
+                                <a href="#" x-on:click="open = ! open" class="flex flex-row items-center px-2 py-1 bg-gray-500 rounded-r border border-gray-400">
+                                    <ion-icon name="search" class="text-gray-300 items-center text-sm"></ion-icon>
+                                </a>
+                            </div>
+                            <div x-show="open" class="absolute top-8 right-12 bg-gray-500 rounded-b border border-gray-400 px-4 py-1">
+                                <div>
+                                    <a href="" class="text-gray-300 text-sm hover:text-gray-200">page name</a>
+                                </div>
+                                <div>
+                                    <a href="" class="text-gray-300 text-sm hover:text-gray-200">page name</a>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- sidebar menu --}}
+                        <nav>
+                            <ul>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row px-2 py-1 mx-2 my-1 rounded shadow items-center justify-between hover:bg-sky-400 bg-sky-500">
+                                        <div class="flex flex-row space-x-3 items-center">
+                                            <ion-icon name="home" class="text-gray-100"></ion-icon>
+                                            <p class="text-gray-100 text-sm">Dashboard</p>
+                                        </div>
+                                        <ion-icon name="arrow-dropdown" class="text-gray-100"></ion-icon>
+                                    </a>
+                                    <ul x-show="open" x-transition.duration.500ms>
+                                        <li class="">
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 bg-gray-300 px-2 py-1 mx-2 my-1 rounded shadow hover:text-gray-700 hover:bg-gray-200">
+                                                <ion-icon name="radio-button-off" class="" :class="{'text-gray-600' : open}"></ion-icon>
+                                                <p class="" :class="{'text-sm text-gray-600' :open}">dashboard v1</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row items-center justify-start space-x-3 px-2 py-1 mx-2 my-1 text-gray-400 hover:bg-gray-600 hover:text-gray-200 rounded shadow">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>dashboard v2</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 px-2 py-1 mx-2 my-1 rounded shadow text-gray-400 hover:text-gray-300 hover:bg-gray-600">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>dashboard v3</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="" class="flex flex-row justify-between items-center mx-2 my-1 py-1 px-2 box-border hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row space-x-3  items-center justify-start">
+                                            <ion-icon name="apps" class="text-gray-400"></ion-icon>
+                                            <p class="text-gray-400 text-sm">
+                                                widgets
+                                            </p>
+                                        </div>
+                                        <span class="text-gray-300 text-xs bg-red-500 px-1 rounded shadow">new</span>
+                                    </a>
+                                </li>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center px-2 py-1 mx-2 my-1 text-gray-400 hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row justify-start items-center space-x-3">
+                                            <ion-icon name="paper"></ion-icon>
+                                            <p class="text-sm">
+                                                layout option
+                                            </p>
+                                        </div>
+                                        <div class="flex flex-row items-center justify-start space-x-3">
+                                            <span class="rounded bg-green-600 px-1 text-gray-300 text-xs">6</span>
+                                            <ion-icon name="arrow-dropleft"></ion-icon>
+                                        </div>
+                                    </a>
+                                    <ul x-show="open" x-transition.duration.500ms>
+                                        <li>
+                                            <a href="" class="flex flex-row items-center text-sm justify-start rounded space-x-3 px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>top navigation</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row items-center text-sm justify-start space-x-3 rounded px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>top navigation + sidebar</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start text-sm items-center rounded px-2 py-1 mx-2 my-1 hover:bg-gray-600 space-x-3 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>boxed</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start text-sm items-center space-x-3 rounded px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>fixed sidebar</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start text-sm items-center space-x-3 rounded px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>
+                                                    fixed sidebar
+                                                    <small class="text-xs">+ custom area</small>
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>fixed navbar</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>fixed footer</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>
+                                                    collapsed sidebar
+                                                </p>
+                                            </a>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row px-2 py-1 mx-2 my-1 items-center justify-between rounded hover:bg-gray-600 text-gray-400">
+                                        <div class="flex flex-row justify-start space-x-3 items-center">
+                                            <ion-icon name="archive"></ion-icon>
+                                            <p>
+                                                charts
+                                            </p>
+                                        </div>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul x-show="open" x-transition.duration.500ms>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>chartjs</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>flot</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>inline</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>uPlot</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row px-2 py-1 mx-2 my-1 items-center justify-between rounded hover:bg-gray-600 text-gray-400">
+                                        <div class="flex flex-row justify-start space-x-3 items-center">
+                                            <ion-icon name="transgender"></ion-icon>
+                                            <p>
+                                                ui element
+                                            </p>
+                                        </div>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul x-show="open" x-transition.duration.500ms>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>general</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>icons</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>buttons</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>sliders</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>modals & alert</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>navbar & tabs</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>timeline</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>ribbons</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row px-2 py-1 mx-2 my-1 items-center justify-between rounded hover:bg-gray-600 text-gray-400">
+                                        <div class="flex flex-row justify-start items-center space-x-3">
+                                            <ion-icon name="create"></ion-icon>
+                                            <p>
+                                                forms
+                                            </p>
+                                        </div>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul x-show="open" x-transition.duration.500ms>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>general element</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>advanced element</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>editor</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>form validation</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row px-2 py-1 mx-2 my-1 items-center justify-between rounded hover:bg-gray-600 text-gray-400">
+                                        <div class="flex flex-row justify-start items-center space-x-3">
+                                            <ion-icon name="list"></ion-icon>
+                                            <p>
+                                                table
+                                            </p>
+                                        </div>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul x-show="open">
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>simple table</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>data table</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="flex flex-row justify-start items-center space-x-3 rounded text-sm px-2 py-1 mx-2 my-1 hover:bg-gray-600 text-gray-400">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>js grid table</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="uppercase text-gray-400 text-sm px-2 py-2">examples</li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="calendar"></ion-icon>
+                                        <p>calender</p>
+                                        <span>2</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="images"></ion-icon>
+                                        <p>galery</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="pricetags"></ion-icon>
+                                        <p>kanban bord</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="mail"></ion-icon>
+                                        <p>mailbox</p>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>inbox</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>compose</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>read</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="document"></ion-icon>
+                                        <p>pages</p>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>infoice</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>profile</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>e-comerce</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>project</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>project add</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>project edit</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>project detail</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>contact</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>faq</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>contact</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="person"></ion-icon>
+                                        <p>Extras</p>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>login & register v1</p>
+                                                <ion-icon name="arrow-dropleft"></ion-icon>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>login v1</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>register v1</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>forgot password v2</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>recover password v1</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>login & register v2</p>
+                                                <ion-icon name="arrow-dropleft"></ion-icon>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>login v2</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>register v2</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>forgot password v1</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>recover password v2</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>loock screen</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>legacy user menu</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>language menu</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>error 404</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>error 500</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>pace</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>blank page</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>starter page</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="search"></ion-icon>
+                                        <p>search</p>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>simple search</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>enhanced</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>micellaneus</p>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="podium"></ion-icon>
+                                        <p>tabded iframe plugin</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="document"></ion-icon>
+                                        <p>documentation</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>multi level example</p>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="radio-button-off"></ion-icon>                                        
+                                        <p>level 1</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="radio-button-off"></ion-icon>
+                                        <p>level 2</p>
+                                        <ion-icon name="arrow-dropleft"></ion-icon>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>level 2</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <ion-icon name="radio-button-off"></ion-icon>
+                                                <p>level 2</p>
+                                                <ion-icon name="arrow-dropleft"></ion-icon>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>level 3</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>level 3</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <ion-icon name="radio-button-off"></ion-icon>
+                                                        <p>level 3</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <ion-icon name="radio-button-off"></ion-icon>
+                                        <p>level 1</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>label</p>
+                                </li>
+                                <li>
+                                    <ion-icon name="radio-button-off"></ion-icon>
+                                    <p>important</p>
+                                </li>
+                                <li>
+                                    <ion-icon name="radio-button-off"></ion-icon>
+                                    <p>warning</p>
+                                </li>
+                                <li>
+                                    <ion-icon name="radio-button-off"></ion-icon>
+                                    <p>informational</p>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
        </aside>
     </div>
 </x-mytmp1.my-layout>

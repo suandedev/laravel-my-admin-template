@@ -1,9 +1,9 @@
 <x-mytmp1.my-layout>
-    <div class="max-h-screen relative bg-gray-50 box-border block">
-       <nav class="ml-60 flex flex-row px-2 py-2 justify-between items-center text-gray-400">
+    <div x-data="{open : false}" class="max-h-screen relative bg-gray-50 box-border block">
+       <nav :class="(open) ? 'ml-0' : 'ml-60'" class="ml-60 flex flex-row px-2 py-2 justify-between items-center text-gray-400">
            <ul class="flex flex-row items-center space-x-3">
                <li>
-                   <a href="#" class="flex items-center hover:text-gray-900">
+                   <a x-on:click="open = ! open" href="#" class="flex items-center hover:text-gray-900">
                         <ion-icon name="menu"></ion-icon>
                    </a>
                </li>
@@ -156,7 +156,7 @@
            </ul>
        </nav>
        {{-- end navbar --}}
-       <aside class="max-h-screen flex flex-col absolute top-0 bg-gray-700 box-border overflow-auto">
+       <aside :class="(open) ? 'hidden' : 'flex'" class="max-h-screen flex flex-col absolute top-0 bg-gray-700 box-border overflow-auto">
             <a href="" class="flex flex-row items-center justify-start space-x-2 px-4 py-2 text-sm border-b border-gray-500 hover:text-gray-300 box-border">
                 <img class="w-6 h-6 rounded-full" src="{{ asset('img/users1.jpg') }}" alt="">
                 <span class="text-gray-400 hover:text-gray-300">MyTmp1</span>
@@ -471,187 +471,199 @@
                                 </li>
                                 <li class="uppercase text-gray-400 text-sm px-2 py-2">examples</li>
                                 <li>
-                                    <a href="">
-                                        <ion-icon name="calendar"></ion-icon>
-                                        <p>calender</p>
-                                        <span>2</span>
+                                    <a href="" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row justify-start items-center space-x-3">
+                                            <ion-icon name="calendar"></ion-icon>
+                                            <p>calender</p>
+                                        </div>
+                                        <span class="bg-sky-500 rounded-sm px-1 text-xs text-gray-300">2</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="" class="flex flex-row justify-start space-x-3 items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
                                         <ion-icon name="images"></ion-icon>
                                         <p>galery</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="" class="flex flex-row justify-start space-x-3 items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
                                         <ion-icon name="pricetags"></ion-icon>
                                         <p>kanban bord</p>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="">
-                                        <ion-icon name="mail"></ion-icon>
-                                        <p>mailbox</p>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row space-x-3 items-center">
+                                            <ion-icon name="mail"></ion-icon>
+                                            <p>mailbox</p>
+                                        </div>
                                         <ion-icon name="arrow-dropleft"></ion-icon>
                                     </a>
-                                    <ul>
+                                    <ul x-show="open" x-transition.duration.500ms>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>inbox</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>compose</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>read</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="">
-                                        <ion-icon name="document"></ion-icon>
-                                        <p>pages</p>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row justify-start items-center space-x-3">
+                                            <ion-icon name="document"></ion-icon>
+                                            <p>pages</p>
+                                        </div>
                                         <ion-icon name="arrow-dropleft"></ion-icon>
                                     </a>
-                                    <ul>
+                                    <ul x-show="open" x-transition.duration.500ms>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>infoice</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>profile</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>e-comerce</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>project</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>project add</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>project edit</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>project detail</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>contact</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>faq</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>contact</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="">
-                                        <ion-icon name="person"></ion-icon>
-                                        <p>Extras</p>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row justify-start space-x-3 items-center">
+                                            <ion-icon name="person"></ion-icon>
+                                            <p>Extras</p>
+                                        </div>
                                         <ion-icon name="arrow-dropleft"></ion-icon>
                                     </a>
-                                    <ul>
-                                        <li>
-                                            <a href="">
-                                                <ion-icon name="radio-button-off"></ion-icon>
-                                                <p>login & register v1</p>
+                                    <ul x-show="open" x-transition.duration.500ms>
+                                        <li x-data="{open : false}">
+                                            <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                                <div class="flex flex-row justify-start items-center space-x-3">
+                                                    <ion-icon name="radio-button-off"></ion-icon>
+                                                    <p>login & register v1</p>
+                                                </div>
                                                 <ion-icon name="arrow-dropleft"></ion-icon>
                                             </a>
-                                            <ul>
+                                            <ul x-show="open" x-transition.duration.500ms>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>login v1</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>register v1</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>forgot password v2</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>recover password v1</p>
                                                     </a>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="">
-                                                <ion-icon name="radio-button-off"></ion-icon>
-                                                <p>login & register v2</p>
+                                        <li x-data="{open : false}">
+                                            <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                                <div class="flex flex-row justify-start items-center space-x-3">
+                                                    <ion-icon name="radio-button-off"></ion-icon>
+                                                    <p>login & register v2</p>
+                                                </div>
                                                 <ion-icon name="arrow-dropleft"></ion-icon>
                                             </a>
-                                            <ul>
+                                            <ul x-show="open" x-transition.duration.500ms>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>login v2</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>register v2</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>forgot password v1</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>recover password v2</p>
                                                     </a>
@@ -659,70 +671,72 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>loock screen</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>legacy user menu</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>language menu</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>error 404</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>error 500</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>pace</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>blank page</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>starter page</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="">
-                                        <ion-icon name="search"></ion-icon>
-                                        <p>search</p>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row justify-start items-center space-x-3">
+                                            <ion-icon name="search"></ion-icon>
+                                            <p>search</p>
+                                        </div>
                                         <ion-icon name="arrow-dropleft"></ion-icon>
                                     </a>
-                                    <ul>
+                                    <ul x-show="open" x-transition.duration.500ms>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>simple search</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>enhanced</p>
                                             </a>
@@ -730,63 +744,67 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <p>micellaneus</p>
+                                    <p class="uppercase mx-2 my-1 py-1 text-gray-400 text-sm">micellaneus</p>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                         <ion-icon name="podium"></ion-icon>
                                         <p>tabded iframe plugin</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                         <ion-icon name="document"></ion-icon>
                                         <p>documentation</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <p>multi level example</p>
+                                    <p class="uppercase mx-2 my-1 py-1 text-gray-400 text-sm">multi level example</p>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                         <ion-icon name="radio-button-off"></ion-icon>                                        
                                         <p>level 1</p>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="">
-                                        <ion-icon name="radio-button-off"></ion-icon>
-                                        <p>level 2</p>
+                                <li x-data="{open : false}">
+                                    <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                        <div class="flex flex-row justify-start items-center space-x-3">
+                                            <ion-icon name="radio-button-off"></ion-icon>
+                                            <p>level 2</p>
+                                        </div>
                                         <ion-icon name="arrow-dropleft"></ion-icon>
                                     </a>
-                                    <ul>
+                                    <ul x-show="open" x-transition.duration.500ms>
                                         <li>
-                                            <a href="">
+                                            <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                 <ion-icon name="radio-button-off"></ion-icon>
                                                 <p>level 2</p>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="">
-                                                <ion-icon name="radio-button-off"></ion-icon>
-                                                <p>level 2</p>
+                                        <li x-data="{open:false}">
+                                            <a href="#" x-on:click="open = ! open" class="flex flex-row justify-between items-center text-gray-400 px-2 py-1 mx-2 my-1 hover:bg-gray-600 rounded">
+                                                <div class="flex flex-row justify-start items-center space-x-3">
+                                                    <ion-icon name="radio-button-off"></ion-icon>
+                                                    <p>level 2</p>
+                                                </div>
                                                 <ion-icon name="arrow-dropleft"></ion-icon>
                                             </a>
-                                            <ul>
+                                            <ul x-show="open" x-transition.duration.500ms>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>level 3</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>level 3</p>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded text-sm space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                                         <ion-icon name="radio-button-off"></ion-icon>
                                                         <p>level 3</p>
                                                     </a>
@@ -796,25 +814,31 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded  space-x-3 justify-start text-gray-400 hover:bg-gray-600">
                                         <ion-icon name="radio-button-off"></ion-icon>
                                         <p>level 1</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <p>label</p>
+                                    <p class="uppercase mx-2 my-1 py-1 text-gray-400 text-sm">label</p>
                                 </li>
                                 <li>
-                                    <ion-icon name="radio-button-off"></ion-icon>
-                                    <p>important</p>
+                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded  space-x-3 justify-start text-gray-400 hover:bg-gray-600">
+                                        <ion-icon name="radio-button-off" class="text-red-500"></ion-icon>
+                                        <p>important</p>
+                                    </a>
                                 </li>
                                 <li>
-                                    <ion-icon name="radio-button-off"></ion-icon>
-                                    <p>warning</p>
+                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded  space-x-3 justify-start text-gray-400 hover:bg-gray-600">
+                                        <ion-icon name="radio-button-off" class="text-yellow-500"></ion-icon>
+                                        <p>warning</p>
+                                    </a>
                                 </li>
                                 <li>
-                                    <ion-icon name="radio-button-off"></ion-icon>
-                                    <p>informational</p>
+                                    <a href="" class="flex flex-row items-center px-2 py-1 mx-2 my-1 rounded  space-x-3 justify-start text-gray-400 hover:bg-gray-600">
+                                        <ion-icon name="radio-button-off" class="text-sky-500"></ion-icon>
+                                        <p>informational</p>
+                                    </a>
                                 </li>
                             </ul>
                         </nav>
@@ -822,5 +846,55 @@
                 </div>
             </div>
        </aside>
+       <div  :class="(open) ? 'ml-0' : 'ml-60'" class="bg-gray-200 box-border">
+           <div class=" px-2 overflow-auto">
+               {{-- content header --}}
+               <div class="flex flex-row justify-between py-4">
+                   <h1 class="text-lg font-semibold capitalize">Dashboard</h1>
+                   <ol class="flex flex-row capitalize text-sm">
+                    <li class="flex flex-row space-x-2 justify-end">
+                           <a href="" class="text-sky-500">home</a>
+                           <span>/</span>
+                           <p>dashboard</p>
+                       </li>
+                   </ol>
+               </div>
+               {{-- main content --}}
+               <section class="box-border">
+                   <div class="flex flex-row space-x-3">
+                       {{-- small boxes --}}
+                       <div class="bg-sky-500 w-44 rounded shadow box-border">
+                           <div class="flex flex-row items-center space-x-2 justify-between px-4 py-2">
+                               <div>
+                                   <h3 class="text-xl font-semibold text-gray-200">150</h3>
+                                   <p class="text-gray-200">new orders</p>
+                               </div>
+                               <ion-icon name="pricetag"></ion-icon>
+                           </div>
+                           <a href="" class="flex flex-row justify-center items-center space-x-2 rounded bg-sky-600 text-gray-300 hover:text-gray-200">
+                               <p>more info</p>
+                               <ion-icon name="arrow-forward"></ion-icon>
+                           </a>
+                       </div>
+                       {{-- main row --}}
+                       <div class="w-44 bg-green-500 rounded shadow">
+                           <div class="  px-4 py-2">
+                               <div class="flex flex-row justify-between items-center">
+                                   <div>
+                                       <h3 class="text-xl text-gray-200 font-semibold">50%</h3>
+                                       <p class="text-gray-200">bounce rate</p>
+                                   </div>
+                                   <ion-icon name="podium"></ion-icon>
+                               </div>
+                            </div>
+                            <a href="" class="flex flex-row justify-center items-center bg-green-600 text-gray-300 hover:text-gray-200 rounded shadow">
+                                <span>more info</span>
+                                <ion-icon name="arrow-forward"></ion-icon>
+                            </a>
+                       </div>
+                   </div>
+               </section>
+           </div>
+       </div>
     </div>
 </x-mytmp1.my-layout>

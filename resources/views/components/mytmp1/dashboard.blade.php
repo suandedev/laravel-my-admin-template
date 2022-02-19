@@ -861,7 +861,7 @@
                </div>
                {{-- main content --}}
                <section class="box-border">
-                   <div class="flex flex-row space-x-3">
+                   <div class="flex flex-row space-x-3 box-border">
                        {{-- small boxes --}}
                        <div class="bg-sky-500 w-44 rounded shadow box-border">
                            <div class="flex flex-row items-center space-x-2 justify-between px-4 py-2">
@@ -889,6 +889,38 @@
                             </div>
                             <a href="" class="flex flex-row justify-center items-center bg-green-600 text-gray-300 hover:text-gray-200 rounded shadow">
                                 <span>more info</span>
+                                <ion-icon name="arrow-forward"></ion-icon>
+                            </a>
+                       </div>
+                       {{-- small box --}}
+                       <div class="bg-yellow-500 rounded shadow w-44">
+                           <div class="px-4 py-2">
+                                <div class="flex flex-row justify-between items-center">
+                                    <div class="flex flex-col text-gray-200">
+                                        <h3 class="text-xl font-semibold">44</h3>
+                                        <p>user registration</p>
+                                    </div>
+                                    <ion-icon name="person-add"></ion-icon>
+                                </div>
+                            </div>
+                            <a href="" class="flex flex-row rounded hover:text-gray-100 bg-yellow-600 items-center text-gray-200 justify-center space-x-3">
+                                <p class="">more info</p>
+                                <ion-icon name="arrow-forward"></ion-icon>
+                            </a>
+                       </div>
+                       {{-- small box --}}
+                       <div class="bg-red-500 w-44 rounded">
+                           <div class="px-4 py-2">
+                                <div class="flex flex-row items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <h3 class="text-xl font-serif text-gray-200">66</h3>
+                                        <p class="text-gray-200">unique visitor</p>
+                                    </div>
+                                    <ion-icon name="pie"></ion-icon>
+                                </div>
+                            </div>
+                            <a href="" class="flex flex-row rounded bg-red-600 items-center justify-center space-x-3 text-gray-200 hover:text-gray-100">
+                                <p>more info</p>
                                 <ion-icon name="arrow-forward"></ion-icon>
                             </a>
                        </div>

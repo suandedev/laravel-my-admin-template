@@ -65,15 +65,15 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## install
 
-open terminal
-git clone https://github.com/suandedev/laravel-my-admin-template.git
-cp .env.example .env
-composer install
-setup the database on env file
-php artisan migrate
-php artisan serve
-
-the dashboard route is /mytmp1
-
-the dashboard will show like this.
+<p>open terminal</p>
+<p>git clone https://github.com/suandedev/laravel-my-admin-template.git</p>
+<p>cp .env.example .env </p>
+<p>composer install</p>
+<p>setup the database on env file</p>
+<p>php artisan migrate</p>
+<p>php artisan serve</p>
+<br>
+<p>the dashboard route is /mytmp1</p>
+<br>
+<p>the dashboard will show like this.</p>
 <img width="50%" src="https://github.com/suandedev/laravel-my-admin-template/blob/main/Screenshot%20(325).png?raw=true">
